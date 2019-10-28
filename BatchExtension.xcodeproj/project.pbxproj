@@ -28,7 +28,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		514E86C22362E8F200E42FF4 /* BatchExtensionSwift-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "BatchExtensionSwift-Info.plist"; path = "/Users/arnaud/dev/github/batchlabs/Batch-iOS-SDK-Extension/BatchExtensionSwift-Info.plist"; sourceTree = "<absolute>"; };
 		514E86C82362EBEC00E42FF4 /* Consts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
 		514E86CA2362EBEC00E42FF4 /* RichNotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichNotificationHelper.swift; sourceTree = "<group>"; };
 		514E86CC2362EBEC00E42FF4 /* BAENotificationServiceExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAENotificationServiceExtension.m; sourceTree = "<group>"; };
@@ -121,7 +120,6 @@
 				514E86C72362EBEC00E42FF4 /* Swift */,
 				51F7ECF5236092FF00E01CD2 /* BatchExtension.h */,
 				51F7ECF6236092FF00E01CD2 /* Info.plist */,
-				514E86C22362E8F200E42FF4 /* BatchExtensionSwift-Info.plist */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
