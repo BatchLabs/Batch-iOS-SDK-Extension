@@ -19,15 +19,37 @@ class BatchExtensionTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testURLExtraction() {
+        let validURL = "https://batch.com/foo.png"
+        let validType = "image/png"
+        
+        let validPayload: [AnyHashable: Any] = [
+            "com.batch": ["at":["u":validURL, "t": validType]]
+        ]
+        
+        let invalidURLPayload: [AnyHashable: Any] = [
+            "com.batch": ["u":"foobar$", "t": "image/png"]
+        ]
+        
+        let missingPayloads: [[AnyHashable: Any]] = [
+            [:],
+            ["foo":"bar"],
+            ["com.batch":["foo":"bar"]],
+            ["com.batch":["at":[:]]],
+            ["com.batch":["at":["foo":"bar"]]],
+            ["com.batch":["at":["u":"https://batch.com/favicon.ico"]]],
+            ["com.batch":["at":["t":"image/jpeg"]]]
+        ]
+        
+        let attachment = try! RichNotificationHelper().attachment(forPayload: validPayload)
+        XCTAssertEqual(attachment.url,
+                       URL(string: validURL)!)
+        XCTAssertEqual(attachment.type, validType)
+        
+        XCTAssertThrowsError(try RichNotificationHelper().attachment(forPayload: invalidURLPayload))
+        
+        for payload in missingPayloads {
+            XCTAssertThrowsError(try RichNotificationHelper().attachment(forPayload: payload))
         }
     }
 
