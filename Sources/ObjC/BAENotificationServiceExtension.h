@@ -13,8 +13,8 @@
 Drop-in replacement for UNNotificationServiceExtension.
 
 Simply set it as your base class without overriding any methods and Batch will automatically:
- - Remove duplicate notifications
  - Download and set rich content
+ - Send display receipts
 */
 @interface BAENotificationServiceExtension : UNNotificationServiceExtension
 

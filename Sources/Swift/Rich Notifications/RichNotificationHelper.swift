@@ -18,7 +18,7 @@ import UserNotifications
 public class RichNotificationHelper : NSObject {
     
     /**
-     Allow the extension to fetch rich notification centent in iOS 13's
+     Allow the extension to fetch rich notification content in iOS 13's
      low data mode.
      Default: false
      */
@@ -148,7 +148,7 @@ extension RichNotificationHelper {
     func download(attachment: Attachment, completionHandler: @escaping (Result<DownloadedAttachment, Error>) -> Void) {
         let urlSessionConfiguration = URLSessionConfiguration.default
         urlSessionConfiguration.timeoutIntervalForResource = TimeInterval(Consts.timeoutIntervalSecs)
-        if #available(iOSApplicationExtension 13.0, *) {
+        if #available(iOS 13.0, *) {
             urlSessionConfiguration.allowsConstrainedNetworkAccess = type(of: self).allowInLowDataMode
         }
         
