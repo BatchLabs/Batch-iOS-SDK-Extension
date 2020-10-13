@@ -2,18 +2,16 @@
 
 This repository contains Batch's iOS Extension SDK.
 
-It is a light version that only uses Extension-safe APIs. For now it provides Rich Push capabilities.
+It is a light version that only uses Extension-safe APIs. It provides Rich Push capabilities and other functionality.
 
-The project is written in Swift 5, but Objective-C projects are supported
+The project is written in Swift 5, but Objective-C projects are supported.
+If you do not have Swift code in your app and do not want to bundle the Swift runtime on versions lower than iOS 12.2,
+use Batch-iOS-SDK-Extension-ObjC.
 
 ## Requirements
 
 - iOS 10 and higher
-- A Xcode version that supports Swift 5 and higher
-
-## Integration
-
-A complete integration documentation can be found [here]() todo: batch.com/doc link
+- Xcode 11 and higher
 
 ### Cocoapods
 
@@ -21,4 +19,5 @@ A complete integration documentation can be found [here]() todo: batch.com/doc l
 
 ### Swift Package Manager
 
-_Requires Xcode 11_
+Add `https://github.com/BatchLabs/Batch-iOS-SDK-Extension.git` as a dependency, and add it to your Extension target.
+You do not need to add this package to your main target.
