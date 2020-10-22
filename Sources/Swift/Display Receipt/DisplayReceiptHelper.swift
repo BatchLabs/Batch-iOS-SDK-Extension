@@ -24,7 +24,7 @@ public class DisplayReceiptHelper : NSObject {
         do {
             let receipt = try displayReceipt(fromPayload: content.userInfo)
             try save(receipt)
-            //try send()
+            try send()
             completionHandler(content, nil)
         } catch {
             completionHandler(content, error)
