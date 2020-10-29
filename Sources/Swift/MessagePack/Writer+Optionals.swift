@@ -2,7 +2,7 @@ import Foundation
 
 // MARK: Public API - Optional extensions
 
-public extension MessagePackWriter {
+internal extension MessagePackWriter {
     /// Pack an optional boolean value.
     /// - Parameter value: Boolean value
     mutating func packOptional(_ value: Bool?) {
