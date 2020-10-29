@@ -12,5 +12,5 @@ Pod::Spec.new do |spec|
 
   spec.requires_arc = true
   spec.source_files  = "Sources", "Sources/**/*.{h,m}", "Sources/**/*.swift"
-  spec.public_header_files = "Classes/**/*.h"
+  spec.public_header_files = "Sources/**/*.h"
 end
