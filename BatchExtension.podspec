@@ -8,6 +8,7 @@ Pod::Spec.new do |spec|
   spec.author       = { "Batch.com" => "support@batch.com" }
   
   spec.platform     = :ios, "10.0"
+  spec.swift_version = ['5.0', '5.1', '5.2', '5.3']
   spec.source       = { :git => "https://github.com/BatchLabs/Batch-iOS-SDK-Extension.git", :tag => "#{spec.version}" }
 
   spec.requires_arc = true
