@@ -90,7 +90,7 @@ public enum DisplayReceiptHelperError: Error, CustomNSError {
         case .unpackError:
             return "Error when unpacking receipt"
         case .appGroupError:
-                return "Could not get app group folder"
+            return "Could not get app group folder"
         case .unknownError:
             return "An unknown error occurred"
         }

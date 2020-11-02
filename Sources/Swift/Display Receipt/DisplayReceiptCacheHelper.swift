@@ -28,10 +28,11 @@ internal struct DisplayReceiptCacheHelper {
 
     static func sharedDirectory() throws -> URL {
         do {
-            let sharedDir = FileManager
-                .default
-                .containerURL(forSecurityApplicationGroupIdentifier: try self.sharedGroupId())!
-                .appendingPathComponent(Consts.receiptCacheDirectory)
+            guard let sharedDir = FileManager
+                    .default
+                    .containerURL(forSecurityApplicationGroupIdentifier: try self.sharedGroupId())?
+                    .appendingPathComponent(Consts.receiptCacheDirectory)
+            else { throw DisplayReceiptHelperError.appGroupError }
             
             try FileManager.default.createDirectory(at: sharedDir, withIntermediateDirectories: true, attributes: nil)
             return sharedDir
