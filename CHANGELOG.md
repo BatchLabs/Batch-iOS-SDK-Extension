@@ -1,3 +1,7 @@
+# 3.0.1
+
+- Fix an issue where the extension would not work if the App Group wasn't setup properly
+
 # 3.0
 
 - New features to be announced
