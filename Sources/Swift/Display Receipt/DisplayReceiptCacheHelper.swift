@@ -43,7 +43,9 @@ internal struct DisplayReceiptCacheHelper {
     
     static func sharedDefaults() throws -> UserDefaults {
         let groupId = try self.sharedGroupId()
-        return UserDefaults.init(suiteName: groupId)!
+        guard let defaults = UserDefaults.init(suiteName: groupId)
+        else { throw DisplayReceiptHelperError.appGroupError }
+        return defaults
     }
     
     // MARK: Methods updating cache files
