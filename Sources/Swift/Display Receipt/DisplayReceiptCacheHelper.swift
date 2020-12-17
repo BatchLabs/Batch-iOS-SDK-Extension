@@ -9,7 +9,9 @@ import Foundation
 
 internal struct DisplayReceiptCacheHelper {
     
-    private let coordinator = NSFileCoordinator(filePresenter: nil)
+    func makeCoordinator() -> NSFileCoordinator {
+        return NSFileCoordinator(filePresenter: nil)
+    }
         
     func sharedGroupId() throws -> String {
         
@@ -57,7 +59,7 @@ internal struct DisplayReceiptCacheHelper {
     func write(toFile file: URL, _ data: Data) throws {
         var error: NSError?
         var writeError: Error?
-        coordinator.coordinate(writingItemAt: file, options: .forReplacing, error: &error) { url in
+        makeCoordinator().coordinate(writingItemAt: file, options: .forReplacing, error: &error) { url in
             do {
                 try data.write(to: url)
             } catch {
@@ -84,7 +86,7 @@ internal struct DisplayReceiptCacheHelper {
     func read(fromFile file: URL) throws -> Data {
         var error: NSError?
         var data: Data?
-        coordinator.coordinate(readingItemAt: file, options: .withoutChanges, error: &error) { url in
+        makeCoordinator().coordinate(readingItemAt: file, options: .withoutChanges, error: &error) { url in
             do {
                 data = try Data(contentsOf: file)
             } catch {
@@ -101,7 +103,7 @@ internal struct DisplayReceiptCacheHelper {
     func delete(_ file: URL) -> Error? {
         var error: NSError?
         var deleteError: Error?
-        coordinator.coordinate(writingItemAt: file, options: .forDeleting, error: &error) { url in
+        makeCoordinator().coordinate(writingItemAt: file, options: .forDeleting, error: &error) { url in
             do {
                 try FileManager.default.removeItem(at: url)
             } catch {
