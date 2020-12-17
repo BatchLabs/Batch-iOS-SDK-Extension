@@ -42,7 +42,7 @@ public class DisplayReceiptHelper : NSObject {
     public func didReceive(_ request: UNNotificationRequest) {
         
         do {
-            if try DisplayReceiptCacheHelper().isOptOut() {
+            if try AppInformationProviderDefaultImpl().isOptOut() {
                 print("Batch - SDK is opt-out, skipping display receipts")
                 return
             }

@@ -23,15 +23,15 @@ class SharedDefaultsTests: XCTestCase {
     }
     
     func testOptOutReading() throws {
-        let cacheHelper = DisplayReceiptCacheHelper(appInformationProvider: appInformationProvider)
+        
         // Default value, when key is missing, should be "true"
-        XCTAssertTrue(try cacheHelper.isOptOut())
+        XCTAssertTrue(try appInformationProvider.isOptOut())
         
         defaults.set(true, forKey: sharedOptOutKey)
-        XCTAssertTrue(try cacheHelper.isOptOut())
+        XCTAssertTrue(try appInformationProvider.isOptOut())
         
         defaults.set(false, forKey: sharedOptOutKey)
-        XCTAssertFalse(try cacheHelper.isOptOut())
+        XCTAssertFalse(try appInformationProvider.isOptOut())
     }
 }
 

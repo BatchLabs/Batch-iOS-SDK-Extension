@@ -15,6 +15,8 @@ protocol AppInformationProvider {
     func sharedDirectory() throws -> URL
     
     func sharedDefaults() throws -> UserDefaults
+
+    func isOptOut() throws -> Bool
 }
 
 public enum AppInformationProviderError: Error, CustomNSError {
@@ -80,6 +82,15 @@ extension AppInformationProvider {
         guard let defaults = UserDefaults.init(suiteName: groupId)
         else { throw DisplayReceiptHelperError.appGroupError }
         return defaults
+    }
+    
+    func isOptOut() throws -> Bool {
+        let defaults = try self.sharedDefaults()
+        if defaults.object(forKey: "batch_shared_optout") == nil {
+            // Key is missing, we don't send display receipt
+            return true
+        }
+        return defaults.bool(forKey: "batch_shared_optout")
     }
 }
 
