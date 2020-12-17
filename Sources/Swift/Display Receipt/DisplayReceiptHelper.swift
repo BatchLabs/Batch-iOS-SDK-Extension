@@ -42,7 +42,7 @@ public class DisplayReceiptHelper : NSObject {
     public func didReceive(_ request: UNNotificationRequest) {
         
         do {
-            if try DisplayReceiptCacheHelper.isOptOut() {
+            if try DisplayReceiptCacheHelper().isOptOut() {
                 print("Batch - SDK is opt-out, skipping display receipts")
                 return
             }
@@ -162,19 +162,20 @@ extension DisplayReceiptHelper {
     
     func save(_ receipt: DisplayReceipt) throws {
         let data = try receipt.pack()
-        try DisplayReceiptCacheHelper.write(data)
+        try DisplayReceiptCacheHelper().write(data)
     }
     
     func send() throws {
+        let cacheHelper = DisplayReceiptCacheHelper()
         // Read receipt in cache
         var packer = MessagePackWriter()
-        let cachedFiles = try DisplayReceiptCacheHelper.cachedFiles()
+        let cachedFiles = try cacheHelper.cachedFiles()
         var receipts = [MessagePackFlatValue]()
         
         for file in cachedFiles {
             do {
                 // Read and update cached receipt
-                let data = try DisplayReceiptCacheHelper.read(fromFile: file)
+                let data = try cacheHelper.read(fromFile: file)
                 let receipt = try DisplayReceipt.unpack(from: data)
                 receipt.sendAttempt += receipt.sendAttempt + 1
                 receipt.replay = false
@@ -183,7 +184,7 @@ extension DisplayReceiptHelper {
                 let tmpData = try MessagePackFlatValue {
                     try receipt.pack(toWriter: &$0)
                 }
-                try DisplayReceiptCacheHelper.write(toFile: file, tmpData.data)
+                try cacheHelper.write(toFile: file, tmpData.data)
             
                 receipts.append(tmpData)
             } catch {
@@ -215,7 +216,7 @@ extension DisplayReceiptHelper {
             if httpResponse != nil && httpResponse!.statusCode >= 200 && httpResponse!.statusCode <= 399 {
                 // Request is successful - delete cached files
                 for file in cachedFiles {
-                    let _ = DisplayReceiptCacheHelper.delete(file)
+                    let _ = cacheHelper.delete(file)
                 }
             }
         })

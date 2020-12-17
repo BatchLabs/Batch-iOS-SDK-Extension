@@ -9,9 +9,9 @@ import Foundation
 
 internal struct DisplayReceiptCacheHelper {
     
-    private static let coordinator = NSFileCoordinator(filePresenter: nil)
+    private let coordinator = NSFileCoordinator(filePresenter: nil)
         
-    static func sharedGroupId() throws -> String {
+    func sharedGroupId() throws -> String {
         
         let groupIdOverride = Bundle.main.object(forInfoDictionaryKey: "BATCH_APP_GROUP_ID")
         if let groupId = groupIdOverride as? String, !groupId.isEmpty {
@@ -26,7 +26,7 @@ internal struct DisplayReceiptCacheHelper {
         throw DisplayReceiptHelperError.appGroupError
     }
 
-    static func sharedDirectory() throws -> URL {
+    func sharedDirectory() throws -> URL {
         do {
             guard let sharedDir = FileManager
                     .default
@@ -41,7 +41,7 @@ internal struct DisplayReceiptCacheHelper {
         }
     }
     
-    static func sharedDefaults() throws -> UserDefaults {
+    func sharedDefaults() throws -> UserDefaults {
         let groupId = try self.sharedGroupId()
         guard let defaults = UserDefaults.init(suiteName: groupId)
         else { throw DisplayReceiptHelperError.appGroupError }
@@ -50,11 +50,11 @@ internal struct DisplayReceiptCacheHelper {
     
     // MARK: Methods updating cache files
     
-    static func newFilename() -> String {
+    func newFilename() -> String {
         return String(format: Consts.receiptCacheFileFormat, UUID().uuidString)
     }
     
-    static func write(toFile file: URL, _ data: Data) throws {
+    func write(toFile file: URL, _ data: Data) throws {
         var error: NSError?
         var writeError: Error?
         coordinator.coordinate(writingItemAt: file, options: .forReplacing, error: &error) { url in
@@ -70,7 +70,7 @@ internal struct DisplayReceiptCacheHelper {
         }
     }
     
-    static func write(_ data: Data) throws {
+    func write(_ data: Data) throws {
         do {
             let cacheDir = try sharedDirectory()
             let cacheFile = cacheDir.appendingPathComponent(newFilename())
@@ -81,7 +81,7 @@ internal struct DisplayReceiptCacheHelper {
         }
     }
     
-    static func read(fromFile file: URL) throws -> Data {
+    func read(fromFile file: URL) throws -> Data {
         var error: NSError?
         var data: Data?
         coordinator.coordinate(readingItemAt: file, options: .withoutChanges, error: &error) { url in
@@ -98,7 +98,7 @@ internal struct DisplayReceiptCacheHelper {
         throw DisplayReceiptHelperError.readCacheError(underlyingError: error ?? NSError())
     }
     
-    static func delete(_ file: URL) -> Error? {
+    func delete(_ file: URL) -> Error? {
         var error: NSError?
         var deleteError: Error?
         coordinator.coordinate(writingItemAt: file, options: .forDeleting, error: &error) { url in
@@ -115,7 +115,7 @@ internal struct DisplayReceiptCacheHelper {
         return nil
     }
     
-    static func cachedFiles() throws -> [URL] {
+    func cachedFiles() throws -> [URL] {
         do {
             let cacheDir = try sharedDirectory()
             let urls = try FileManager.default.contentsOfDirectory(at: cacheDir,
@@ -148,7 +148,7 @@ internal struct DisplayReceiptCacheHelper {
     
     // MARK: Methods reading user defaults
 
-    static func isOptOut() throws -> Bool {
+    func isOptOut() throws -> Bool {
         let defaults = try self.sharedDefaults()
         if defaults.object(forKey: "batch_shared_optout") != nil {
             // Key is missing, we don't send display receipt
