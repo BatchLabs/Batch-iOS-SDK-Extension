@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		512540D6254AD54000F01090 /* Writer+Optionals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512540D5254AD54000F01090 /* Writer+Optionals.swift */; };
+		5141F8EA258A6CB300170375 /* SharedDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141F8DE258A211900170375 /* SharedDefaultsTests.swift */; };
 		514E86CE2362EBEC00E42FF4 /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E86C82362EBEC00E42FF4 /* Consts.swift */; };
 		514E86CF2362EBEC00E42FF4 /* RichNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E86CA2362EBEC00E42FF4 /* RichNotificationHelper.swift */; };
 		514E86D02362EBEC00E42FF4 /* BAENotificationServiceExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 514E86CC2362EBEC00E42FF4 /* BAENotificationServiceExtension.m */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		512540D5254AD54000F01090 /* Writer+Optionals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Writer+Optionals.swift"; sourceTree = "<group>"; };
+		5141F8DE258A211900170375 /* SharedDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDefaultsTests.swift; sourceTree = "<group>"; };
 		514E86C82362EBEC00E42FF4 /* Consts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
 		514E86CA2362EBEC00E42FF4 /* RichNotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichNotificationHelper.swift; sourceTree = "<group>"; };
 		514E86CC2362EBEC00E42FF4 /* BAENotificationServiceExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAENotificationServiceExtension.m; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				51F7ED00236092FF00E01CD2 /* BatchExtensionTests.swift */,
 				51F7ED02236092FF00E01CD2 /* Info.plist */,
+				5141F8DE258A211900170375 /* SharedDefaultsTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5141F8EA258A6CB300170375 /* SharedDefaultsTests.swift in Sources */,
 				51F7ED01236092FF00E01CD2 /* BatchExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

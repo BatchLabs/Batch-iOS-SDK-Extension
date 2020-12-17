@@ -9,7 +9,11 @@ import Foundation
 
 internal struct DisplayReceiptCacheHelper {
     
-    private var appInformationProvider: AppInformationProvider = AppInformationProviderDefaultImpl()
+    private let appInformationProvider: AppInformationProvider
+    
+    init(appInformationProvider injectedAppInfoProvider: AppInformationProvider = AppInformationProviderDefaultImpl()) {
+        self.appInformationProvider = injectedAppInfoProvider
+    }
     
     func makeCoordinator() -> NSFileCoordinator {
         return NSFileCoordinator(filePresenter: nil)
