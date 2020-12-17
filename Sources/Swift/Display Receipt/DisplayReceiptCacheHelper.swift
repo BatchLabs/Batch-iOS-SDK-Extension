@@ -121,7 +121,7 @@ internal struct DisplayReceiptCacheHelper {
 
     func isOptOut() throws -> Bool {
         let defaults = try appInformationProvider.sharedDefaults()
-        if defaults.object(forKey: "batch_shared_optout") != nil {
+        if defaults.object(forKey: "batch_shared_optout") == nil {
             // Key is missing, we don't send display receipt
             return true
         }
