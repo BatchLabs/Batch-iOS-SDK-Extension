@@ -9,45 +9,10 @@ import Foundation
 
 internal struct DisplayReceiptCacheHelper {
     
+    private var appInformationProvider: AppInformationProvider = AppInformationProviderDefaultImpl()
+    
     func makeCoordinator() -> NSFileCoordinator {
         return NSFileCoordinator(filePresenter: nil)
-    }
-        
-    func sharedGroupId() throws -> String {
-        
-        let groupIdOverride = Bundle.main.object(forInfoDictionaryKey: "BATCH_APP_GROUP_ID")
-        if let groupId = groupIdOverride as? String, !groupId.isEmpty {
-            return groupId
-        }
-        
-        let bundleIdentifer = Bundle.main.bundleIdentifier
-        if let bundleId = bundleIdentifer, !bundleId.isEmpty {
-            return "group." + bundleId + ".batch"
-        }
-        
-        throw DisplayReceiptHelperError.appGroupError
-    }
-
-    func sharedDirectory() throws -> URL {
-        do {
-            guard let sharedDir = FileManager
-                    .default
-                    .containerURL(forSecurityApplicationGroupIdentifier: try self.sharedGroupId())?
-                    .appendingPathComponent(Consts.receiptCacheDirectory)
-            else { throw DisplayReceiptHelperError.appGroupError }
-            
-            try FileManager.default.createDirectory(at: sharedDir, withIntermediateDirectories: true, attributes: nil)
-            return sharedDir
-        } catch {
-            throw DisplayReceiptHelperError.writeCacheError(underlyingError: error)
-        }
-    }
-    
-    func sharedDefaults() throws -> UserDefaults {
-        let groupId = try self.sharedGroupId()
-        guard let defaults = UserDefaults.init(suiteName: groupId)
-        else { throw DisplayReceiptHelperError.appGroupError }
-        return defaults
     }
     
     // MARK: Methods updating cache files
@@ -74,7 +39,7 @@ internal struct DisplayReceiptCacheHelper {
     
     func write(_ data: Data) throws {
         do {
-            let cacheDir = try sharedDirectory()
+            let cacheDir = try appInformationProvider.sharedDirectory()
             let cacheFile = cacheDir.appendingPathComponent(newFilename())
             
             try write(toFile: cacheFile, data)
@@ -119,7 +84,7 @@ internal struct DisplayReceiptCacheHelper {
     
     func cachedFiles() throws -> [URL] {
         do {
-            let cacheDir = try sharedDirectory()
+            let cacheDir = try appInformationProvider.sharedDirectory()
             let urls = try FileManager.default.contentsOfDirectory(at: cacheDir,
                                                                    includingPropertiesForKeys: [.isRegularFileKey, .creationDateKey, .isReadableKey],
                                                                    options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
@@ -151,7 +116,7 @@ internal struct DisplayReceiptCacheHelper {
     // MARK: Methods reading user defaults
 
     func isOptOut() throws -> Bool {
-        let defaults = try self.sharedDefaults()
+        let defaults = try appInformationProvider.sharedDefaults()
         if defaults.object(forKey: "batch_shared_optout") != nil {
             // Key is missing, we don't send display receipt
             return true
