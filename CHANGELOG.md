@@ -1,3 +1,7 @@
+# 3.0.2
+
+- Fix an issue where a user would be considered as opted-out even though they were not
+
 # 3.0.1
 
 - Fix an issue where the extension would not work if the App Group wasn't setup properly
