@@ -7,7 +7,11 @@
 
 #import "BAENotificationServiceExtension.h"
 
+#if __has_include(<BatchExtension/BatchExtension-Swift.h>)
 #import <BatchExtension/BatchExtension-Swift.h>
+#else
+#import "BatchExtension-Swift.h"
+#endif
 
 @implementation BAENotificationServiceExtension
 {
