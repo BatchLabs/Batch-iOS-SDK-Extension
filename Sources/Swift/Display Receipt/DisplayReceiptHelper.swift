@@ -208,7 +208,7 @@ extension DisplayReceiptHelper {
         var request = URLRequest(url: DisplayReceiptHelper.displayReceiptUrl)
         request.httpMethod = "POST"
         request.addValue(Consts.receiptSchemaVersion, forHTTPHeaderField: Consts.receiptHeaderSchemaVersion)
-        request.addValue("3.0.2-swift", forHTTPHeaderField: Consts.receiptHeaderExtVersion)
+        request.addValue("3.0.3-swift", forHTTPHeaderField: Consts.receiptHeaderExtVersion)
         
         let task = session.uploadTask(with: request, from: data,
                                       completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in

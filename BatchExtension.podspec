@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "BatchExtension"
-  spec.version      = "3.0.2"
+  spec.version      = "3.0.3"
   spec.summary      = "Batch.com iOS SDK for App Extensions."
   spec.homepage     = "https://batch.com"
   spec.license      = { :type => "MIT", :file => "LICENSE" }
