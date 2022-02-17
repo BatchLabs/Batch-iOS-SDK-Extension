@@ -1,3 +1,7 @@
+# 3.0.3
+
+- Allow usage in a cocoapods static library
+
 # 3.0.2
 
 - Fix an issue where a user would be considered as opted-out even though they were not
