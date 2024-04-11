@@ -3,6 +3,7 @@
 - Removed legacy code
 - Removed use of App Group and UserDefaults
 - Added privacy manifest
+- Minimum iOS version is 12.0 as Xcode doesn't support older versions anymore.
 
 # 3.0.3
 
