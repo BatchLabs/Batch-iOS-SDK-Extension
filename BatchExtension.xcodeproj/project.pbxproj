@@ -13,6 +13,7 @@
 		514E86D02362EBEC00E42FF4 /* BAENotificationServiceExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 514E86CC2362EBEC00E42FF4 /* BAENotificationServiceExtension.m */; };
 		514E86D12362EBEC00E42FF4 /* BAENotificationServiceExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 514E86CD2362EBEC00E42FF4 /* BAENotificationServiceExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		514E86D72362FC1E00E42FF4 /* BAENotificationServiceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E86D62362FC1E00E42FF4 /* BAENotificationServiceExtension.swift */; };
+		515884352BC7F13B005F77D7 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 515884342BC7F13B005F77D7 /* PrivacyInfo.xcprivacy */; };
 		51F7ECFC236092FF00E01CD2 /* BatchExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F7ECF2236092FF00E01CD2 /* BatchExtension.framework */; };
 		51F7ED01236092FF00E01CD2 /* BatchExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F7ED00236092FF00E01CD2 /* BatchExtensionTests.swift */; };
 		51F7ED03236092FF00E01CD2 /* BatchExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 51F7ECF5236092FF00E01CD2 /* BatchExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -35,6 +36,7 @@
 		514E86CC2362EBEC00E42FF4 /* BAENotificationServiceExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAENotificationServiceExtension.m; sourceTree = "<group>"; };
 		514E86CD2362EBEC00E42FF4 /* BAENotificationServiceExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAENotificationServiceExtension.h; sourceTree = "<group>"; };
 		514E86D62362FC1E00E42FF4 /* BAENotificationServiceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAENotificationServiceExtension.swift; sourceTree = "<group>"; };
+		515884342BC7F13B005F77D7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		51F7ECF2236092FF00E01CD2 /* BatchExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BatchExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51F7ECF5236092FF00E01CD2 /* BatchExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BatchExtension.h; sourceTree = "<group>"; };
 		51F7ECF6236092FF00E01CD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 		514E86C72362EBEC00E42FF4 /* Swift */ = {
 			isa = PBXGroup;
 			children = (
+				515884342BC7F13B005F77D7 /* PrivacyInfo.xcprivacy */,
 				514E86D52362FAC300E42FF4 /* SwiftPM */,
 				514E86C82362EBEC00E42FF4 /* Consts.swift */,
 				514E86C92362EBEC00E42FF4 /* Rich Notifications */,
@@ -229,6 +232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				515884352BC7F13B005F77D7 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
