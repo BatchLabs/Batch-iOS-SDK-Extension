@@ -27,7 +27,7 @@ github "BatchLabs/Batch-iOS-SDK-Extension"
 
 ### Swift Package Manager
 
-_Requires Xcode 11_
+_Requires Xcode 15_
 
 Add https://github.com/BatchLabs/Batch-iOS-SDK-Extension.git as a dependency, and add it to your Extension target.
 You do not need to add this package to your main target.
