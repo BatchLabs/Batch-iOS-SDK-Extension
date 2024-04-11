@@ -8,7 +8,7 @@ The project is written in Swift, but can be used with Objective-C.
 
 ## Requirements
 
-- iOS 10 and higher
+- iOS 12 and higher
 - A Xcode version that supports Swift 5 and higher
 
 ## Integration
