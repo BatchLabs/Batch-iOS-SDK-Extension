@@ -20,7 +20,8 @@ let package = Package(
             name: "BatchExtension",
             dependencies: [],
             path: "Sources/Swift",
-            swiftSettings: [.define("BATCHEXTENSION_PURE_SWIFT")]
+            swiftSettings: [.define("BATCHEXTENSION_PURE_SWIFT")],
+            resources: [.copy("PrivacyInfo.xcprivacy")]
             ),
     ]
 )
