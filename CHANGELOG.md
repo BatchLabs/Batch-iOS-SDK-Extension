@@ -1,3 +1,9 @@
+# 4.0
+
+- Removed legacy code
+- Removed use of App Group and UserDefaults
+- Added privacy manifest
+
 # 3.0.3
 
 - Allow usage in a cocoapods static library
@@ -13,7 +19,7 @@
 # 3.0
 
 - New features to be announced
-- Images are no longer download
+- Images are no longer downloaded on low data mode
   To revert to the original behaviour, set RichNotificationHelper.allowInLowDataMode to `true` (BAERichNotificationHelper in Objective-C)
 
 # 2.0
