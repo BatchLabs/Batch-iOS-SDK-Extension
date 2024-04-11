@@ -12,6 +12,7 @@ Pod::Spec.new do |spec|
   spec.source       = { :git => "https://github.com/BatchLabs/Batch-iOS-SDK-Extension.git", :tag => "#{spec.version}" }
 
   spec.requires_arc = true
-  spec.source_files  = "Sources", "Sources/**/*.{h,m}", "Sources/**/*.swift"
+  spec.source_files  = [ "Sources/**/*.{h,m}", "Sources/**/*.swift" ]
   spec.public_header_files = "Sources/**/*.h"
+  spec.resource_bundles = {"BatchExtension" => ["Sources/Swift/PrivacyInfo.xcprivacy"]}
 end
