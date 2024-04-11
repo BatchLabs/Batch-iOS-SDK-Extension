@@ -25,16 +25,13 @@ Simply set it as your base class without overriding any methods and Batch will a
 
 open class BAENotificationServiceExtension: UNNotificationServiceExtension {
     let richNotificationHelper = RichNotificationHelper()
-    let displayReceiptHelper = DisplayReceiptHelper()
     
     override open func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
         richNotificationHelper.didReceive(request, withContentHandler: contentHandler)
-        displayReceiptHelper.didReceive(request)
     }
     
     override open func serviceExtensionTimeWillExpire() {
         richNotificationHelper.serviceExtensionTimeWillExpire()
-        displayReceiptHelper.serviceExtensionTimeWillExpire()
     }
 }
 
